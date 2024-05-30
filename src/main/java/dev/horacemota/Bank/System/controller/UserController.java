@@ -22,9 +22,12 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserResponse> registerAccount(@RequestBody User user) {
         User savedUser = service.registerUser(user);
+
         UserResponse userResponse = new UserResponse();
+        userResponse.setId(savedUser.getId());
         userResponse.setName(savedUser.getName());
         userResponse.setEmail(savedUser.getEmail());
+        userResponse.setAddress(savedUser.getAddress());
 
         return ResponseEntity.ok(userResponse);
 
