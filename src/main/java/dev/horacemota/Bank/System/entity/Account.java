@@ -16,10 +16,10 @@ public class Account {
     private Long id;
 
     @Column(unique = true)
-    private String AccountName;
+    private String accountName;
     private String accountNumber;
     private double balance;
-    private String account_type = "Saving";
+    private String accountType = "Saving";
     private String Pin;
     private String accountstatus;
 
