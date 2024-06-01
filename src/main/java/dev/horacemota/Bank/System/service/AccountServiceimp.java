@@ -21,10 +21,13 @@ public class AccountServiceimp implements AccountService {
         String accountNumber = generateAccountNumber();
 
         Account account = new Account();
+        boolean accountStatus = true;
+
+        account.setAccountstatus("ACTIVATED");
+        account.setAccountType("Saving");
         account.setUser(user);
         account.setAccountNumber(accountNumber);
         account.setAccountName(user.getName());
-        account.setAccount_type("Saving");
         account.setBalance(0.0);
         return AccountRepository.save(account);
     }
