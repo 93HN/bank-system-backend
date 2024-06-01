@@ -16,8 +16,8 @@ public class Account {
     private Long id;
 
     @Column(unique = true)
-    String AccountName;
-
+    private String AccountName;
+    private String AccountNumber;
     private double balance;
     private String account_type = "Saving";
     private String Pin;
