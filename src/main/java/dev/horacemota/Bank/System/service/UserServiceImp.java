@@ -7,15 +7,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImp implements UserService {
 
-    private final UserRepository repository;
+    private final UserRepository userrepository;
+    private final AccountService accountService;
 
     @Autowired
-    public UserServiceImp(UserRepository repository) {
-        this.repository = repository;
+    public UserServiceImp(UserRepository repository, AccountService accountService) {
+        this.userrepository = repository;
+        this.accountService = accountService;
     }
 
     // Register new user + insert a new account
     public User registerUser(User user) {
-        return repository.save(user);
+        User savedUser = userrepository.save(user);
+        accountService.createAccount(savedUser);
+        return savedUser;
     }
 }
