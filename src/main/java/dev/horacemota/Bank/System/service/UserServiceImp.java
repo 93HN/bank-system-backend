@@ -14,6 +14,7 @@ public class UserServiceImp implements UserService {
         this.repository = repository;
     }
 
+    // Register new user + insert a new account
     public User registerUser(User user) {
         return repository.save(user);
     }
