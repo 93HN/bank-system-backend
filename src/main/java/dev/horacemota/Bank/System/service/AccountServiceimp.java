@@ -3,9 +3,11 @@ import dev.horacemota.Bank.System.entity.Account;
 import dev.horacemota.Bank.System.entity.User;
 import dev.horacemota.Bank.System.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.UUID;
 
-public class AccountServiceimp {
+@Service
+public class AccountServiceimp implements AccountService {
 
     @Autowired
     private final AccountRepository AccountRepository;
@@ -19,7 +21,9 @@ public class AccountServiceimp {
         String accountNumber = generateAccountNumber();
 
         Account account = new Account();
+        account.setUser(user);
         account.setAccountNumber(accountNumber);
+        account.setAccountName(user.getName());
         account.setAccount_type("Saving");
         account.setBalance(0.0);
         return AccountRepository.save(account);
