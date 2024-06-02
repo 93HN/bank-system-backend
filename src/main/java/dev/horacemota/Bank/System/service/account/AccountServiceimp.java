@@ -1,4 +1,4 @@
-package dev.horacemota.Bank.System.service;
+package dev.horacemota.Bank.System.service.account;
 import dev.horacemota.Bank.System.entity.Account;
 import dev.horacemota.Bank.System.entity.User;
 import dev.horacemota.Bank.System.repository.AccountRepository;
