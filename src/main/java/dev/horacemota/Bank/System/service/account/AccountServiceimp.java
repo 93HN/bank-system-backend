@@ -3,6 +3,7 @@ import dev.horacemota.Bank.System.entity.Account;
 import dev.horacemota.Bank.System.entity.User;
 import dev.horacemota.Bank.System.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 
@@ -42,5 +43,10 @@ public class AccountServiceimp implements AccountService {
         return accountNumber;
     }
 
+    public void createPIN(String accountNumber, String pin) {
+        Account account = AccountRepository.findByAccountNumber(accountNumber);
+        account.setPin(pin);
+        AccountRepository.save(account);
+    }
 
 }

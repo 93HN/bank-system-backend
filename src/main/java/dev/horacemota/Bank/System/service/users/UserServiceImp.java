@@ -1,8 +1,11 @@
 package dev.horacemota.Bank.System.service.users;
+import dev.horacemota.Bank.System.entity.Account;
 import dev.horacemota.Bank.System.entity.User;
+import dev.horacemota.Bank.System.repository.AccountRepository;
 import dev.horacemota.Bank.System.repository.UserRepository;
 import dev.horacemota.Bank.System.service.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +13,12 @@ import java.util.List;
 @Service
 public class UserServiceImp implements UserService {
 
+    @Autowired
     private final UserRepository userrepository;
+    @Autowired
     private final AccountService accountService;
 
-    @Autowired
-    public UserServiceImp(UserRepository repository, AccountService accountService) {
+    public UserServiceImp(AccountRepository accountRepository, UserRepository repository, AccountService accountService) {
         this.userrepository = repository;
         this.accountService = accountService;
     }
@@ -31,4 +35,5 @@ public class UserServiceImp implements UserService {
         List<User> allUsers =  userrepository.findAll();
         return allUsers;
     }
+
 }
